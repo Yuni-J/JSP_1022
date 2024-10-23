@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,41 @@
             <td>${bvo.moddate}</td>
         </tr>
     </table>
-	<button>modify</button>
-	<button>delete</button>
+	<a href="/brd/modify?bno=${bvo.bno }"><button type="button">update</button></a>
+	<a href="/brd/delete?bno=${bvo.bno }"><button type="button">delete</button></a>
+	
+	<hr>
+	<!-- comment line -->
+	<div>
+		<h3>Comment Line</h3>
+		<input type="text" id="cmtWriter" placeholder="writer..."> <br>
+		<input type="text" id="cmtText" placeholder="Add Comment..."> 
+		<button type="button" id="cmtAddBtn">post</button>
+	</div>
+	<br>
+	<hr>
+	<!-- comment print line -->
+	<div id="commentLine">
+		<div>
+			<div>cno, bno, writer, regdate</div>
+			<div>
+				<button>수정</button> <button>삭제</button> <br>
+				<input type="text" value="content"> 
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		const bnoVal = `<c:out value="${bvo.bno }" />`;
+		console.log(bnoVal);
+	</script>
+	
+	<script type="text/javascript" src="/resources/board_detail.js"></script>
+	
+	<!-- 댓글 리스트 호출 -->
+	<script type="text/javascript">
+		printList(bnoVal);
+	</script>
+	
 </body>
 </html>

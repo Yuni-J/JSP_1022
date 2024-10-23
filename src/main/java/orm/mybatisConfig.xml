@@ -16,5 +16,7 @@
   </environments>
   <mappers>
     <mapper resource="mapper/boardMapper.xml"/>  <!-- 실제 파일명 -->
+    <!-- mapper 추가 될 때마다 추가 -->
+    <mapper resource="mapper/commentMapper.xml"/>
   </mappers>
 </configuration>

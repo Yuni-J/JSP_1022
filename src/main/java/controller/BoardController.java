@@ -45,7 +45,7 @@ public class BoardController extends HttpServlet {
 		response.setCharacterEncoding("utf-8");  //응답객체
 		//response는 jsp로 갈 응답 객체 => 화면을 생성해서 응답 => jsp 형식으로...
 		//contentType="text/html; charset=UTF-8" 
-		response.setContentType("text/html; charset=UTF-8");  //html5 형식으로 보내라\
+		response.setContentType("text/html; charset=UTF-8");  //html5 형식으로 보내라\ =>동기방식, 비동기는 안해도됌
 		
 		// 경로 가져오기  /brd/register
 		String uri = request.getRequestURI();
@@ -95,16 +95,48 @@ public class BoardController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
-		case "detail":
+		case "detail": case "modify": 
 			try {
 				int bno = Integer.parseInt(request.getParameter("bno"));
 				BoardVO bvo = bsv.getDetail(bno);
 				log.info(">>> detail bvo >> {}", bvo);
 				request.setAttribute("bvo", bvo);
-				destPage="/board/detail.jsp";
+//				if(path.equals("detail")) {
+//					destPage="/board/detail.jsp";					
+//				} else {
+//					destPage="/board/modify.jsp";
+//				}
+				destPage = "/board/"+path+".jsp";
 				
 			} catch (Exception e) {
 				log.info("detail error!!");
+				e.printStackTrace();
+			}
+			break;
+		case "update":
+			try {
+				int bno = Integer.parseInt(request.getParameter("bno"));
+				String title = request.getParameter("title");
+				String content = request.getParameter("content");
+				BoardVO bvo = new BoardVO(bno, title, content);
+				int isOk = bsv.update(bvo);
+				log.info(">>> update >>> "+(isOk>0?"성공":"실패"));
+				// 컨트롤러 내부 케이스는 /brd/ 따로 적을 필요가 없음.
+				destPage = "detail?bno="+bno;
+				
+			} catch (Exception e) {
+				log.info("update error!!");
+				e.printStackTrace();
+			}
+			break;
+		case "delete":
+			try {
+				int bno = Integer.parseInt(request.getParameter("bno"));
+				int isOk = bsv.delete(bno);
+				log.info(">>> delete >>> "+(isOk>0?"성공":"실패"));
+				destPage = "list";  // 내부 케이스를 탈 때 
+			} catch (Exception e) {
+				log.info("delete error!!");
 				e.printStackTrace();
 			}
 			break;
