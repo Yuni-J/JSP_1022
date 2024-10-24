@@ -67,5 +67,13 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return isOk;
 	}
+
+	@Override
+	public int readCount(int bno) {
+		log.info(">>> readCount DAO in");
+		int isOk = sql.update("BoardMapper.increCnt", bno);
+		if(isOk > 0) sql.commit();
+		return isOk;
+	}
 	
 }

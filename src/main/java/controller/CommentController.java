@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,7 +73,7 @@ public class CommentController extends HttpServlet {
 				
 				CommentVO cvo = new CommentVO(bno, content, writer);
 				int isOk = csv.post(cvo);
-				log.info(">>> post > {}",(isOk>0?"성공":"실패"));
+				log.info(">>> comment post > {}",(isOk>0?"성공":"실패"));
 				
 				// 결과 데이터를 전송 => 화면으로 전송(response 객체의 body에 기록)
 				PrintWriter out = response.getWriter();
@@ -83,11 +84,12 @@ public class CommentController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+			
 		case "list":
 			try {
 				int bno = Integer.parseInt(request.getParameter("bno"));
 				List<CommentVO> list = csv.getList(bno);
-				log.info(">>> list > {}", list);
+				log.info(">>> comment list > {}", list);
 				
 				// list 를 json 형태로 변환하여 보내기
 				// [{...},{...},{...}] : [] JSONArray
@@ -119,7 +121,55 @@ public class CommentController extends HttpServlet {
 				log.info("comment list error!!");
 				e.printStackTrace();
 			}
-		
+			break;
+			
+		case "modify":
+			try {
+				StringBuffer sb = new StringBuffer();
+				String line = "";
+				BufferedReader br = request.getReader();
+				while((line = br.readLine()) != null) {
+					sb.append(line);
+				}
+				log.info(">>> sb > {}", sb.toString());
+				
+				JSONParser parser = new JSONParser();
+				JSONObject jsonObj = (JSONObject)parser.parse(sb.toString());
+				log.info(">>> jsonObj > {}", jsonObj);
+				
+				int cno = Integer.parseInt(jsonObj.get("cno").toString());
+				String content = jsonObj.get("content").toString();
+				
+				CommentVO cvo = new CommentVO(cno, content);
+				int isOk = csv.modify(cvo);
+				log.info(">>> comment modify > {}",(isOk>0?"성공":"실패"));
+				
+				PrintWriter out = response.getWriter();
+				out.print(isOk);
+				
+			} catch (ParseException e) {
+				log.info("comment modify error!!");
+				e.printStackTrace();
+			}
+			break;
+			
+		case "delete":
+			try {
+				int cno = Integer.parseInt(request.getParameter("cno"));
+				int isOk = csv.delete(cno);
+				log.info(">>> comment delete > {} ",(isOk>0?"성공":"실패"));
+				
+				PrintWriter out = response.getWriter();
+				out.print(isOk);
+				
+			} catch (Exception e) {
+				log.info("comment delete error!!");
+				e.printStackTrace();
+			}
+			
+			
+			
+			break;	
 		}
 		
 	}

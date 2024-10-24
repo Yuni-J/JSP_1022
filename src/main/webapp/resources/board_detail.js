@@ -116,6 +116,17 @@ async function updateCommentToServer(cmtData){
 	}
 }
 
+async function deleteCommentToServer(cnoVal){
+	try{
+		const resp = await fetch("/cmt/delete?cno="+cnoVal);  // fetch : 이동하는 명령어
+		const result = await resp.text();
+		return result
+	
+	} catch(error){
+		console.log(error);
+	}
+}
+
 
 document.addEventListener('click', (e)=>{
 	console.log(e.target);
@@ -135,6 +146,14 @@ document.addEventListener('click', (e)=>{
 		
 		updateCommentToServer(cmtData).then(result => {
 			console.log(result);
+			if(result == '1'){
+				alert("댓글 수정 완료~!")
+			} else{
+				alert("댓글 수정 실패~!")
+			}
+			
+			// 수정 후 수정된 내용 출력
+			printList(bnoVal);
 		})
 		
 		
@@ -149,11 +168,27 @@ document.addEventListener('click', (e)=>{
 
 	// 삭제
 	if(e.target.classList.contains('cmtDelBtn')){
-		//삭제에 대한 처리
+		// 삭제에 대한 처리
 		let cnoVal = e.target.dataset.cno;
 		let cmtText = document.getElementById(cnoVal).value;
 		console.log(cmtText);
+		
+		
+		// 삭제 비동기 함수 호출 result 받아서 alert 뛰우기.
+		deleteCommentToServer(cnoVal).then(result => {
+			console.log(result);
+			if(result == '1'){
+				alert("댓글 삭제 성공 !!");
+			} else {
+				alert("댓글 삭제 실패!!");
+			}		
+		})
+		// 삭제 후 출력 메서드 호출
+		printList(bnoVal);
 	}
+	
+	
+
 });
 
 

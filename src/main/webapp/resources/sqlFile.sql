@@ -22,3 +22,7 @@ create table board(
  regdate datetime default now(),
  primary key(cno));
  
+ -- 2024.10.24
+ ALTER TABLE board ADD COLUMN readCount INT DEFAULT 0;
+ alter table board add imageFile varchar(500);
+ 
