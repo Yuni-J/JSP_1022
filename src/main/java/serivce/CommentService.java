@@ -10,8 +10,11 @@ public interface CommentService {
 
 	List<CommentVO> getList(int bno);
 
+<<<<<<< HEAD
 	int modify(CommentVO cvo);
 
 	int delete(int cno);
 
+=======
+>>>>>>> origin/main
 }

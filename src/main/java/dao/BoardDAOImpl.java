@@ -67,6 +67,7 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return isOk;
 	}
+<<<<<<< HEAD
 
 	@Override
 	public int readCount(int bno) {
@@ -75,5 +76,7 @@ public class BoardDAOImpl implements BoardDAO {
 		if(isOk > 0) sql.commit();
 		return isOk;
 	}
+=======
+>>>>>>> origin/main
 	
 }

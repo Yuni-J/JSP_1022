@@ -180,7 +180,10 @@ public class BoardController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+<<<<<<< HEAD
 			
+=======
+>>>>>>> origin/main
 		case "detail": case "modify": 
 			try {
 				int bno = Integer.parseInt(request.getParameter("bno"));
@@ -204,6 +207,7 @@ public class BoardController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+<<<<<<< HEAD
 			
 		case "update":
 			try {
@@ -284,13 +288,28 @@ public class BoardController extends HttpServlet {
 				log.info(">>> update >>> "+(isOk>0?"성공":"실패"));
 				// 컨트롤러 내부 케이스는 /brd/ 따로 적을 필요가 없음.
 				destPage = "detail?bno="+bvo.getBno();
+=======
+		case "update":
+			try {
+				int bno = Integer.parseInt(request.getParameter("bno"));
+				String title = request.getParameter("title");
+				String content = request.getParameter("content");
+				BoardVO bvo = new BoardVO(bno, title, content);
+				int isOk = bsv.update(bvo);
+				log.info(">>> update >>> "+(isOk>0?"성공":"실패"));
+				// 컨트롤러 내부 케이스는 /brd/ 따로 적을 필요가 없음.
+				destPage = "detail?bno="+bno;
+>>>>>>> origin/main
 				
 			} catch (Exception e) {
 				log.info("update error!!");
 				e.printStackTrace();
 			}
 			break;
+<<<<<<< HEAD
 			
+=======
+>>>>>>> origin/main
 		case "delete":
 			try {
 				int bno = Integer.parseInt(request.getParameter("bno"));

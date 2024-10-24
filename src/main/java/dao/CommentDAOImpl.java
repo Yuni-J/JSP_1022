@@ -32,6 +32,7 @@ public class CommentDAOImpl implements CommtentDAO {
 		return sql.selectList("CommentMapper.list", bno);
 	}
 
+<<<<<<< HEAD
 	@Override
 	public int modify(CommentVO cvo) {
 		log.info("comment dao modify in!!");
@@ -48,4 +49,6 @@ public class CommentDAOImpl implements CommtentDAO {
 		return isOk;
 	}
 
+=======
+>>>>>>> origin/main
 }

@@ -16,6 +16,9 @@ public interface BoardService {
 
 	int delete(int bno);
 
+<<<<<<< HEAD
 	int readCount(int bno);
 
+=======
+>>>>>>> origin/main
 }

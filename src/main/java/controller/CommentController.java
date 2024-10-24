@@ -14,7 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+<<<<<<< HEAD
 import org.json.simple.parser.ParseException;
+=======
+>>>>>>> origin/main
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,7 +76,11 @@ public class CommentController extends HttpServlet {
 				
 				CommentVO cvo = new CommentVO(bno, content, writer);
 				int isOk = csv.post(cvo);
+<<<<<<< HEAD
 				log.info(">>> comment post > {}",(isOk>0?"성공":"실패"));
+=======
+				log.info(">>> post > {}",(isOk>0?"성공":"실패"));
+>>>>>>> origin/main
 				
 				// 결과 데이터를 전송 => 화면으로 전송(response 객체의 body에 기록)
 				PrintWriter out = response.getWriter();
@@ -84,12 +91,19 @@ public class CommentController extends HttpServlet {
 				e.printStackTrace();
 			}
 			break;
+<<<<<<< HEAD
 			
+=======
+>>>>>>> origin/main
 		case "list":
 			try {
 				int bno = Integer.parseInt(request.getParameter("bno"));
 				List<CommentVO> list = csv.getList(bno);
+<<<<<<< HEAD
 				log.info(">>> comment list > {}", list);
+=======
+				log.info(">>> list > {}", list);
+>>>>>>> origin/main
 				
 				// list 를 json 형태로 변환하여 보내기
 				// [{...},{...},{...}] : [] JSONArray
@@ -121,6 +135,7 @@ public class CommentController extends HttpServlet {
 				log.info("comment list error!!");
 				e.printStackTrace();
 			}
+<<<<<<< HEAD
 			break;
 			
 		case "modify":
@@ -170,6 +185,9 @@ public class CommentController extends HttpServlet {
 			
 			
 			break;	
+=======
+		
+>>>>>>> origin/main
 		}
 		
 	}

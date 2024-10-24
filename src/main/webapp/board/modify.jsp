@@ -19,9 +19,13 @@
 </head>
 <body>
 	<h1>Board Modify Page</h1>
+<<<<<<< HEAD
 	<img alt="" src="/_fileUpload/${bvo.imageFile }">
 
 	<form action="/brd/update" method="post" enctype="multipart/form-data">
+=======
+	<form action="/brd/update" method="post">
+>>>>>>> origin/main
 	<input type="hidden" name="bno" value="${bvo.bno }">
 	    <table>
 	        <tr>
@@ -49,6 +53,7 @@
 	            <th>Moddate</th>
 	            <td>${bvo.moddate}</td>
 	        </tr>
+<<<<<<< HEAD
 	        <!-- 파일 변경 -->
 	        <tr>
 	            <th>ImageFile</th>
@@ -57,6 +62,8 @@
 	            	<input type="file" name="newFile" accept="image/jpg, image/gif, image/jpeg">
 	            </td>
 	        </tr>
+=======
+>>>>>>> origin/main
 	    </table>
     <!-- 수정버튼을 누르면 내가 수정한 내용을 가지고(form => submit) 컨트롤러로 이동 -->
 	<button type="submit">modify commit</button>

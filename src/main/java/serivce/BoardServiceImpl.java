@@ -47,11 +47,14 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return bdao.delete(bno);
 	}
+<<<<<<< HEAD
 
 	@Override
 	public int readCount(int bno) {
 		// TODO Auto-generated method stub
 		return bdao.readCount(bno);
 	}
+=======
+>>>>>>> origin/main
 	
 }

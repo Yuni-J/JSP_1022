@@ -53,7 +53,10 @@
     </table>
 	<a href="/brd/modify?bno=${bvo.bno }"><button type="button">update</button></a>
 	<a href="/brd/delete?bno=${bvo.bno }"><button type="button">delete</button></a>
+<<<<<<< HEAD
 	<a href="/brd/list"><button>list</button></a>
+=======
+>>>>>>> origin/main
 	
 	<hr>
 	<!-- comment line -->

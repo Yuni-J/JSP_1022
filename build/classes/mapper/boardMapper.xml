@@ -24,17 +24,24 @@
   </select>
   
   <update id="up" parameterType="domain.BoardVO">
+<<<<<<< HEAD
   	update board set title = #{title}, content=#{content}, moddate=now(), imageFile=#{imageFile} where bno=#{bno}
+=======
+  	update board set title = #{title}, content=#{content}, moddate = now() where bno=#{bno}
+>>>>>>> origin/main
   </update>
   
   <delete id="delete" parameterType="int">
   	delete from board where bno=#{bno}
   </delete>
   
+<<<<<<< HEAD
   <update id="increCnt" parameterType="int">
   	update board set readCount = readCount+1 where bno=#{bno}
   </update>
   
   
   
+=======
+>>>>>>> origin/main
   </mapper>
