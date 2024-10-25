@@ -53,16 +53,13 @@
     </table>
 	<a href="/brd/modify?bno=${bvo.bno }"><button type="button">update</button></a>
 	<a href="/brd/delete?bno=${bvo.bno }"><button type="button">delete</button></a>
-<<<<<<< HEAD
 	<a href="/brd/list"><button>list</button></a>
-=======
->>>>>>> origin/main
 	
 	<hr>
 	<!-- comment line -->
 	<div>
 		<h3>Comment Line</h3>
-		<input type="text" id="cmtWriter" placeholder="writer..."> <br>
+		<input type="text" id="cmtWriter" placeholder="writer..." value="${ses.id }" readonly="readonly"> <br>
 		<input type="text" id="cmtText" placeholder="Add Comment..."> 
 		<button type="button" id="cmtAddBtn">post</button>
 	</div>

@@ -16,7 +16,7 @@
 		title : <br>
 		<input type="text" name="title" placeholder="제목..."> <br> <!-- input의 name명과 같아야한다. -->
 		writer : <br>
-		<input type="text" name="writer" placeholder="작성자..."> <br>
+		<input type="text" name="writer" value="${ses.id }" readonly="readonly"> <br>
 		content : <br>
 		<textarea rows="10" cols="50" name="content" placeholder="내용을 입력하세요."></textarea>
 		file : <br>

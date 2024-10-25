@@ -15,7 +15,6 @@
   		order by cno desc
   	</select>
   	
-<<<<<<< HEAD
   	<update id="mod">
   		update comment set content=#{content}, regdate = now() where cno=#{cno}
   	</update>
@@ -23,8 +22,5 @@
   	<delete id="del">
   		delete from comment where cno=#{cno}
   	</delete>
-  	
-=======
->>>>>>> origin/main
   	
   </mapper>

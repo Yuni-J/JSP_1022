@@ -21,11 +21,20 @@ create table board(
  writer varchar(500) default "unknown",
  regdate datetime default now(),
  primary key(cno));
-<<<<<<< HEAD
  
  -- 2024.10.24
  ALTER TABLE board ADD COLUMN readCount INT DEFAULT 0;
  alter table board add imageFile varchar(500);
-=======
->>>>>>> origin/main
+
+
+-- 2024.10.25
+create table member(
+id varchar(100),  
+pwd varchar(100) not null,
+email varchar(200) not null,
+phone varchar(50),
+regdate datetime default now(),
+lastlogin datetime default now(),
+primary key(id));
+
  

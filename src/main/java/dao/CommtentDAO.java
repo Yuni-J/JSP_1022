@@ -10,11 +10,8 @@ public interface CommtentDAO {
 
 	List<CommentVO> getList(int bno);
 
-<<<<<<< HEAD
 	int modify(CommentVO cvo);
 
 	int delete(int cno);
 
-=======
->>>>>>> origin/main
 }
